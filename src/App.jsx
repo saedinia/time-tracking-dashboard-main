@@ -15,8 +15,8 @@ function App() {
       <main>
         <div className="wrapper">
           <div className="layout-grid">
-            <div className="col">
-              <div className="dashboard__card">
+            <div className="col col-profile">
+              <div className="dashboard__card card__profile">
                 <div className="profile">
                   <img src={avater} alt="" />
                   <label>Report for</label>
@@ -31,7 +31,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col col-card-other">
               <div className="dashboard__card card__work">
                 <div className="card__banner">
                   <img src={icon_work} alt="" />
@@ -45,6 +45,35 @@ function App() {
                   <p>Last Week - <span>36hrs</span></p>
                 </div>
               </div>
+
+              <div className="dashboard__card card__play">
+                <div className="card__banner">
+                  <img src={icon_play} alt="" />
+                </div>
+                <div className="card__content">
+                  <div className="card__header">
+                    <div className="card_title">Play</div>
+                    <img src={icon_ellipsis} alt="" />
+                  </div>
+                  <h1>32hrs</h1>
+                  <p>Last Week - <span>36hrs</span></p>
+                </div>
+              </div>
+
+              <div className="dashboard__card card__study">
+                <div className="card__banner">
+                  <img src={icon_study} alt="" />
+                </div>
+                <div className="card__content">
+                  <div className="card__header">
+                    <div className="card_title">Study</div>
+                    <img src={icon_ellipsis} alt="" />
+                  </div>
+                  <h1>32hrs</h1>
+                  <p>Last Week - <span>36hrs</span></p>
+                </div>
+              </div>
+
               <div className="dashboard__card card__exercise">
                 <div className="card__banner">
                   <img src={icon_exercise} alt="" />
@@ -58,21 +87,7 @@ function App() {
                   <p>Last Week - <span>36hrs</span></p>
                 </div>
               </div>
-            </div>
-            <div className="col">
-            <div className="dashboard__card card__play">
-                <div className="card__banner">
-                  <img src={icon_play} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card_title">Play</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
+           
               <div className="dashboard__card card__social">
                 <div className="card__banner">
                   <img src={icon_social} alt="" />
@@ -85,22 +100,8 @@ function App() {
                   <h1>32hrs</h1>
                   <p>Last Week - <span>36hrs</span></p>
                 </div>
-              </div>
-            </div>
-            <div className="col">
-            <div className="dashboard__card card__study">
-                <div className="card__banner">
-                  <img src={icon_study} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card_title">Study</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
+              </div>  
+
               <div className="dashboard__card card__selfcare">
                 <div className="card__banner">
                   <img src={icon_selfcare} alt="" />
