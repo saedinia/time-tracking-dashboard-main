@@ -1,7 +1,11 @@
-import React, { useContext } from 'react'
+import PropTypes from 'prop-types';
 import icon_ellipsis from './../assets/images/icon-ellipsis.svg'
-import { SVGContext } from './../contexts/SVGContext'; // Import your SVG context file
-
+import icon_work from './../assets/images/icon-work.svg'
+import icon_exercise from './../assets/images/icon-exercise.svg'
+import icon_play from './../assets/images/icon-play.svg'
+import icon_study from './../assets/images/icon-study.svg'
+import icon_social from './../assets/images/icon-social.svg'
+import icon_selfcare from './../assets/images/icon-self-care.svg'
 
 function Card(props) {
     const data = props.data;
@@ -10,9 +14,6 @@ function Card(props) {
     const current = data.timeframes[timeFrame].current;
     const previous = data.timeframes[timeFrame].previous;
     let timeFrameShow = 'Day'
-
-    const icons = useContext(SVGContext);
-    console.log(icons);
 
     switch (timeFrame) {
         case 'daily':
@@ -28,106 +29,72 @@ function Card(props) {
             break;
     }
 
-    return (
-    <div className={"dashboard__card card__" + data.title.split(' ').join('').toLowerCase()}>
-        <div className="card__banner">
-            <img src='' alt="" />
-        </div>
-        <div className="card__content">
-            <div className="card__header">
-            <div className="card__title">{data.title}</div>
-            <img src={icon_ellipsis} alt="" />
-            </div>
-            <h1>{current}hrs</h1>
-            <p>Last {timeFrameShow} - <span>{previous}hrs</span></p>
-        </div>
-    </div>
-    // <>
-    //     <div className="dashboard__card card__work">
-    //         <div className="card__banner">
-    //             <img src={icon_work} alt="" />
-    //         </div>
-    //         <div className="card__content">
-    //             <div className="card__header">
-    //             <div className="card__title">Work</div>
-    //             <img src={icon_ellipsis} alt="" />
-    //             </div>
-    //             <h1>32hrs</h1>
-    //             <p>Last Week - <span>36hrs</span></p>
-    //         </div>
-    //     </div>
-
-    //     <div className="dashboard__card card__play">
-    //         <div className="card__banner">
-    //             <img src={icon_play} alt="" />
-    //         </div>
-    //         <div className="card__content">
-    //             <div className="card__header">
-    //             <div className="card__title">Play</div>
-    //             <img src={icon_ellipsis} alt="" />
-    //             </div>
-    //             <h1>32hrs</h1>
-    //             <p>Last Week - <span>36hrs</span></p>
-    //         </div>
-    //     </div>
-
-    //     <div className="dashboard__card card__study">
-    //         <div className="card__banner">
-    //             <img src={icon_study} alt="" />
-    //         </div>
-    //         <div className="card__content">
-    //             <div className="card__header">
-    //             <div className="card__title">Study</div>
-    //             <img src={icon_ellipsis} alt="" />
-    //             </div>
-    //             <h1>32hrs</h1>
-    //             <p>Last Week - <span>36hrs</span></p>
-    //         </div>
-    //     </div>
-
-    //     <div className="dashboard__card card__exercise">
-    //         <div className="card__banner">
-    //             <img className="no-margin-top" src={icon_exercise} alt="" />
-    //         </div>
-    //         <div className="card__content">
-    //             <div className="card__header">
-    //             <div className="card__title">Exercise</div>
-    //             <img src={icon_ellipsis} alt="" />  
-    //             </div>
-    //             <h1>32hrs</h1>
-    //             <p>Last Week - <span>36hrs</span></p>
-    //         </div>
-    //     </div>
+    const handleIcon = (title) => {
         
-    //     <div className="dashboard__card card__social">
-    //         <div className="card__banner">
-    //             <img src={icon_social} alt="" />
-    //         </div>
-    //         <div className="card__content">
-    //             <div className="card__header">
-    //             <div className="card__title">Social</div>
-    //             <img src={icon_ellipsis} alt="" />
-    //             </div>
-    //             <h1>32hrs</h1>
-    //             <p>Last Week - <span>36hrs</span></p>
-    //         </div>
-    //     </div>  
-
-    //     <div className="dashboard__card card__selfcare">
-    //         <div className="card__banner">
-    //             <img src={icon_selfcare} alt="" />
-    //         </div>
-    //         <div className="card__content">
-    //             <div className="card__header">
-    //             <div className="card__title">Self Care</div>
-    //             <img src={icon_ellipsis} alt="" />
-    //             </div>
-    //             <h1>32hrs</h1>
-    //             <p>Last Week - <span>36hrs</span></p>
-    //         </div>
-    //     </div>
-    // </>
-  )
+        switch (title.split(' ').join('-').toLowerCase()) {
+            case 'work':
+                return (
+                    <img src={icon_work} alt="" />
+                )
+            case 'exercise':
+                return (
+                    <img src={icon_exercise} alt="" />
+                )
+            case 'play':
+                return (
+                    <img src={icon_play} alt="" />
+                )
+            case 'study':
+                return (
+                    <img src={icon_study} alt="" />
+                )
+            case 'social':
+                return (
+                    <img src={icon_social} alt="" />
+                )
+            case 'selfcare':
+                return (
+                    <img src={icon_selfcare} alt="" />
+                )
+        }
+    }
+    
+    return (
+        <div className={"dashboard__card card__" + data.title.split(' ').join('').toLowerCase()}>
+            <div className="card__banner">            
+                {handleIcon(data.title.split(' ').join('').toLowerCase())}
+            </div>
+            <div className="card__content">
+                <div className="card__header">
+                <div className="card__title">{data.title}</div>
+                <img src={icon_ellipsis} alt="" />
+                </div>
+                <h1>{current}hrs</h1>
+                <p>Last {timeFrameShow} - <span>{previous}hrs</span></p>
+            </div>
+        </div>
+    )
 }
+
+Card.propTypes = {
+    data: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        timeframes: PropTypes.shape({
+            daily: PropTypes.shape({
+                current: PropTypes.number.isRequired,
+                previous: PropTypes.number.isRequired,
+            }).isRequired,
+            weekly: PropTypes.shape({
+                current: PropTypes.number.isRequired,
+                previous: PropTypes.number.isRequired,
+            }).isRequired,
+            monthly: PropTypes.shape({
+                current: PropTypes.number.isRequired,
+                previous: PropTypes.number.isRequired,
+            }).isRequired,
+        }).isRequired,
+    }).isRequired,
+    timeFrame: PropTypes.oneOf(['daily', 'weekly', 'monthly']).isRequired,
+};
 
 export default Card
