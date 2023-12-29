@@ -3,7 +3,6 @@ import Card from './components/Card'
 import data from './../data.json'
 import { useState } from 'react'
 
-
 function App() {
   const [timeFrame, setTimeFrame] = useState('weekly');
 
