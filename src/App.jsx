@@ -1,15 +1,20 @@
 import avater from './assets/images/image-jeremy.png'
-import icon_ellipsis from './assets/images/icon-ellipsis.svg'
-import icon_work from './assets/images/icon-work.svg'
-import icon_exercise from './assets/images/icon-exercise.svg'
-import icon_play from './assets/images/icon-play.svg'
-import icon_study from './assets/images/icon-study.svg'
-import icon_social from './assets/images/icon-social.svg'
-import icon_selfcare from './assets/images/icon-self-care.svg'
+import Card from './components/Card'
+import data from './../data.json'
+import { useState } from 'react'
 
 
 function App() {
+  const [timeFrame, setTimeFrame] = useState('weekly');
 
+  const handleTimeFrame = (e) => {
+    const timeFramesItems = document.querySelectorAll('.time li')
+    timeFramesItems.forEach(item => item.classList.remove('active'))
+    
+    e.target.classList.add('active');
+
+    setTimeFrame(e.target.innerText.toLowerCase())
+  }
   return (
     <>
       <main>
@@ -26,97 +31,21 @@ function App() {
                 </div>
                 <div className="time">
                   <ul>
-                    <li>Daily</li>
-                    <li className='active'>Weekly</li>
-                    <li>Monthly</li>
+                    <li onClick={handleTimeFrame}>Daily</li>
+                    <li className='active' onClick={handleTimeFrame}>Weekly</li>
+                    <li onClick={handleTimeFrame}>Monthly</li>
                   </ul>
                 </div>
               </div>
             </div>
             <div className="col col-card-other">
-              <div className="dashboard__card card__work">
-                <div className="card__banner">
-                  <img src={icon_work} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card__title">Work</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
-
-              <div className="dashboard__card card__play">
-                <div className="card__banner">
-                  <img src={icon_play} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card__title">Play</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
-
-              <div className="dashboard__card card__study">
-                <div className="card__banner">
-                  <img src={icon_study} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card__title">Study</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
-
-              <div className="dashboard__card card__exercise">
-                <div className="card__banner">
-                  <img className="no-margin-top" src={icon_exercise} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card__title">Exercise</div>
-                    <img src={icon_ellipsis} alt="" />  
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
-           
-              <div className="dashboard__card card__social">
-                <div className="card__banner">
-                  <img src={icon_social} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card__title">Social</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>  
-
-              <div className="dashboard__card card__selfcare">
-                <div className="card__banner">
-                  <img src={icon_selfcare} alt="" />
-                </div>
-                <div className="card__content">
-                  <div className="card__header">
-                    <div className="card__title">Self Care</div>
-                    <img src={icon_ellipsis} alt="" />
-                  </div>
-                  <h1>32hrs</h1>
-                  <p>Last Week - <span>36hrs</span></p>
-                </div>
-              </div>
+              {
+                data.map(card => {
+                  return (
+                    <Card key={card.title} data={card} timeFrame={timeFrame}/>
+                  )
+                })
+              }
             </div>
           </div>
         </div>        
