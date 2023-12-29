@@ -68,12 +68,12 @@ main {
   place-items: center;
   
   .wrapper {
-    width: 1100px;
-    margin-inline: auto;
+    @media screen and (min-width: 800px) {
+      width: 1100px;
+      margin-inline: auto;
+    }
   }
 }
-
-
 
 .layout-grid {
   --gap: 2rem;
@@ -82,9 +82,13 @@ main {
 
   display: grid;
   gap: var(--gap);
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas: "card-profile card-others card-others card-others";
-
+  padding-block: calc(var(--padding) * 2);
+  
+  @media screen and (min-width: 800px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "card-profile card-others card-others card-others"; 
+    padding-block:unset;
+  }
 
   > * {
 		display: grid;
@@ -92,19 +96,26 @@ main {
     grid-auto-rows: 1fr;
 	}
 
-  .col-profile {
-    grid-column: card-profile;
+  @media screen and (min-width: 800px) {
+    .col-profile {
+      grid-column: card-profile;
+    }
+  
+    .col-card-other {
+      grid-column: card-others;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
-  .col-card-other {
-    grid-column: card-others;
-    grid-template-columns: repeat(3, 1fr);
-  }
+  
 
   .dashboard__card {
     border-radius: var(--br);
     background: var(--clr-neutral-dark-blue);
-    padding-block-end: var(--padding);
+
+    &.card__profile {
+      padding-block-end: 1.5rem;
+    }
     
     .profile,
     .time,
@@ -113,9 +124,18 @@ main {
     }
 
     .profile {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      @media screen and (min-width: 800px) {
+        display: block;
+        padding-block: var(--padding) calc(var(--padding) * 2.5);
+      }
+  
       background: var(--clr-primary-blue);
       border-radius: var(--br);
-      padding-block: var(--padding) calc(var(--padding) * 2.5);
+      padding-block: var(--padding);
       margin-block-end: 1.5rem;
   
       img {
@@ -133,16 +153,32 @@ main {
 
       h2 {
         font-weight: var(--fw-light);
-        font-size: var(--fs-800);
+        font-size: var(--fs-700);
+
+        @media screen and (min-width: 800px) {
+          font-size: var(--fs-800);
+        }
       }
     }
 
     .time {
       ul {
+        display: flex;
+        justify-content: space-between;
+
+
+        @media screen and (min-width: 800px) {
+          display: block;
+        }
+
         li {
-          line-height: 2.25;
           color: var(--clr-neutral-pale-blue);
           font-weight: var(--fw-light);
+          transition: color .25s linear;
+
+          @media screen and (min-width: 800px) {
+            line-height: 2.25;
+          }
 
           &.active,
           &:hover {
@@ -180,10 +216,15 @@ main {
 
     .card__banner {
       overflow: hidden;
+      height: 4.25rem;
 
       img {
-        margin-left: auto;
-        margin-top: -0.6rem;
+        margin-block-start: -0.6rem;
+        margin-inline: auto 1rem;
+
+        &.no-margin-top {
+          margin-top: 0;
+        }
       }
     }
 
@@ -191,7 +232,43 @@ main {
       border-radius: var(--br);
       background: var(--clr-neutral-dark-blue);
       margin-top: -1.5rem;
-      position: relative;     
+      position: relative;
+      display: grid;
+      padding-block: 1rem;
+      grid-auto-rows: 1fr;
+      transition: background .25s linear;
+      cursor: default;
+
+      @media screen and (min-width: 800px) {
+        gap: 1rem;
+      }
+
+      &:hover {
+        background: var(--clr-neutral-desaturated-blue) ;
+      }
+
+      .card__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .card__title {
+          font-size: var(--fs-500);
+
+          +img {
+            cursor: pointer;
+          }
+        }
+      }
+
+      h1 {
+        font-weight: var(--fw-light);
+      }
+
+      p {
+        font-weight: var(--fw-light);
+        font-size: var(--fs-500);
+      }
     }
   }
 }

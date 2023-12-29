@@ -19,8 +19,10 @@ function App() {
               <div className="dashboard__card card__profile">
                 <div className="profile">
                   <img src={avater} alt="" />
-                  <label>Report for</label>
-                  <h2>Jeremy Robson</h2>
+                  <div>
+                    <label>Report for</label>
+                    <h2>Jeremy Robson</h2>
+                  </div>
                 </div>
                 <div className="time">
                   <ul>
@@ -38,7 +40,7 @@ function App() {
                 </div>
                 <div className="card__content">
                   <div className="card__header">
-                    <div className="card_title">Work</div>
+                    <div className="card__title">Work</div>
                     <img src={icon_ellipsis} alt="" />
                   </div>
                   <h1>32hrs</h1>
@@ -52,7 +54,7 @@ function App() {
                 </div>
                 <div className="card__content">
                   <div className="card__header">
-                    <div className="card_title">Play</div>
+                    <div className="card__title">Play</div>
                     <img src={icon_ellipsis} alt="" />
                   </div>
                   <h1>32hrs</h1>
@@ -66,7 +68,7 @@ function App() {
                 </div>
                 <div className="card__content">
                   <div className="card__header">
-                    <div className="card_title">Study</div>
+                    <div className="card__title">Study</div>
                     <img src={icon_ellipsis} alt="" />
                   </div>
                   <h1>32hrs</h1>
@@ -76,12 +78,12 @@ function App() {
 
               <div className="dashboard__card card__exercise">
                 <div className="card__banner">
-                  <img src={icon_exercise} alt="" />
+                  <img className="no-margin-top" src={icon_exercise} alt="" />
                 </div>
                 <div className="card__content">
                   <div className="card__header">
-                    <div className="card_title">Exercise</div>
-                    <img src={icon_ellipsis} alt="" />
+                    <div className="card__title">Exercise</div>
+                    <img src={icon_ellipsis} alt="" />  
                   </div>
                   <h1>32hrs</h1>
                   <p>Last Week - <span>36hrs</span></p>
@@ -94,7 +96,7 @@ function App() {
                 </div>
                 <div className="card__content">
                   <div className="card__header">
-                    <div className="card_title">Social</div>
+                    <div className="card__title">Social</div>
                     <img src={icon_ellipsis} alt="" />
                   </div>
                   <h1>32hrs</h1>
@@ -108,7 +110,7 @@ function App() {
                 </div>
                 <div className="card__content">
                   <div className="card__header">
-                    <div className="card_title">Self Care</div>
+                    <div className="card__title">Self Care</div>
                     <img src={icon_ellipsis} alt="" />
                   </div>
                   <h1>32hrs</h1>
